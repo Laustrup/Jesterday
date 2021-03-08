@@ -31,7 +31,7 @@ public class SessionController {
 
     @GetMapping("/makeajoke.html")
     public String beginJoke() {
-        return "makeajoke.html";
+        return "submit.html";
     }
 
 
