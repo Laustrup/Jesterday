@@ -19,7 +19,12 @@ public class Joke {
 
     @Override
     public String toString() {
-        return title + "<br>" + content;
+        if (isPublic) {
+            return title + "<br><br>" + content;
+        }
+        else {
+            return null;
+        }
     }
 
 }

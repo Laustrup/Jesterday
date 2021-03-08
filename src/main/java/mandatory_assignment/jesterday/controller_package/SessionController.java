@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class SessionController {
 
     private Joke joke;
-    private ArrayList<Joke> jokes = new ArrayList<>();
     private HttpSession session;
 
     @GetMapping("/")
@@ -33,18 +32,17 @@ public class SessionController {
         return "makeajoke.html";
     }
 
-    @GetMapping("/jokeboard.html")
-    public String viewJokes() {
-        return "jokeboard.html";
-    }
+    //Wrote getmapping urls as .html in order to make it dynamic testing through springboot and HTMLs
 
-    @PostMapping("/submit")
-    public String submitJoke(HttpServletRequest request,
+    @GetMapping("/submit-post")
+    public String submitJoke(HttpServletRequest request, Model model,
                              @RequestParam("title") String title,
                              @RequestParam("content") String content,
                              @RequestParam("date") String date,
                              @RequestParam("publicity") boolean publicity,
-                             @RequestParam("politicalcorrect") boolean politicalcorrect, Model model) {
+                             @RequestParam("politicalcorrect") boolean politicalcorrect) {
+
+        System.out.println("Arrived in submit-post...");
 
         model.addAttribute("jokeList",session.getAttribute("jokes"));
 
@@ -54,15 +52,19 @@ public class SessionController {
 
         session = request.getSession();
 
+        session.setAttribute("currentJoke", joke);
         session.setAttribute("jokes",model.getAttribute("jokeList"));
+
+        System.out.println("Joke is " + joke.toString());
 
         return "redirect:/success.html";
     }
 
-    @GetMapping("/jokeboard")
+    @GetMapping("/jokeboard.html")
     public String showJokeBoard(Model model) {
         model.addAttribute("jokeList",session.getAttribute("jokes"));
 
         return "jokeboard.html";
     }
+
 }

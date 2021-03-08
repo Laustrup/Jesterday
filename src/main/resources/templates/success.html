@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" href="../style.css">
+    <link rel="shortcut icon" type="image/png" href="../Jester.png">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Jesterday</title>
 </head>
 <body>
+
+<header>
+    <h1>Jokeboard</h1>
+</header>
+
+<main>
+    <h3>Success!</h3>
+    <div th:text="${currentJoke}"></div>
+</main>
 
 </body>
 </html>
