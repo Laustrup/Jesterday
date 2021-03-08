@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,6 +18,7 @@ public class SessionController {
     private Joke joke;
     private HttpSession session;
 
+    //Wrote getmapping urls as .html in order to make it dynamic testing through springboot and HTMLs
     @GetMapping("/")
     public String introduction() {
         return "index.html";
@@ -32,15 +34,14 @@ public class SessionController {
         return "makeajoke.html";
     }
 
-    //Wrote getmapping urls as .html in order to make it dynamic testing through springboot and HTMLs
 
     @GetMapping("/submit-post")
     public String submitJoke(HttpServletRequest request, Model model,
-                             @RequestParam("title") String title,
-                             @RequestParam("content") String content,
-                             @RequestParam("date") String date,
-                             @RequestParam("publicity") boolean publicity,
-                             @RequestParam("politicalcorrect") boolean politicalcorrect) {
+                             @RequestParam(name = "title") String title,
+                             @RequestParam(name = "content") String content,
+                             @RequestParam(name = "date") String date,
+                             @RequestParam(name = "publicity") boolean publicity,
+                             @RequestParam(name = "politicalcorrect") boolean politicalcorrect) {
 
         System.out.println("Arrived in submit-post...");
 
