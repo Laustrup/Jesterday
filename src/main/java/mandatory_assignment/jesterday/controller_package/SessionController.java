@@ -34,27 +34,23 @@ public class SessionController {
                              @RequestParam(name = "title") String title,
                              @RequestParam(name = "content") String content,
                              @RequestParam(name = "date") String date,
-                             @RequestParam(name = "publicity") boolean publicity,
-                             @RequestParam(name = "politicalcorrect") boolean politicalcorrect) {
+                             @RequestParam(name = "publicity", required = false) boolean publicity,
+                             @RequestParam(name = "politicalcorrect", required = false) boolean politicalcorrect) {
 
-        System.out.println("Arrived in submit-post...");
-
-        /*
-        if(session!=null) {
-            //model.addAttribute("jokes",session.getAttribute("jokeboard"));
+        //If none checkboxes are edited
+        if (publicity != true) {
+            publicity = Boolean.FALSE.equals(publicity);
         }
-         */
+        if (politicalcorrect != true) {
+            politicalcorrect = Boolean.FALSE.equals(politicalcorrect);
+        }
 
         joke = new Joke(title,content,date,publicity,politicalcorrect);
 
         jokes.add(joke);
 
-        //model.addAttribute("jokes",joke);
-
         session = request.getSession();
         session.setAttribute("sessionJoke",joke);
-
-        //session.setAttribute("jokeboard",model.getAttribute("jokes"));
 
         System.out.println("Joke is " + jokes.get(jokes.size()-1));
 
