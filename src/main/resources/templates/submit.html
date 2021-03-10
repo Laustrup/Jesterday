@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
-        <link rel="stylesheet" href="../style.css">
+        <link href="../static/style.css" th:href="@{/style.css}" rel="stylesheet" />
         <link rel="shortcut icon" type="image/png" href="../Jester.png">
         <meta charset="UTF-8">
         <title>Jesterday</title>
@@ -37,15 +37,14 @@
                             <label for="politicalcorrect">Political Correct</label>
                             <input type="checkbox" id="politicalcorrect" name="politicalcorrect">
                         </div>
+
+
+                        <div>
+                            <a href="/submit-post" class="button">Tell joke</a>
+                            <a href="index.html" class="button">Go back</a>
+                        </div>
                      </form>
                 </section>
-
-                    <section>
-                        <a href="/submit-post" class="button">Tell joke</a>
-                        <a href="index.html" class="button">Go back</a>
-                    </section>
-
-
 
             </main>
 
