@@ -20,7 +20,7 @@ public class Joke {
     @Override
     public String toString() {
         if (isPublic) {
-            return title + "<br><br>" + content;
+            return title + "   " + content;
         }
         else {
             return null;

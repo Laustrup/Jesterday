@@ -15,9 +15,10 @@
 </header>
 
 <main>
-    <ul th:each="jokes : ${jokeList}">
+    <ul th:each="jokes : ${allJoke}">
         <li th:text="${jokes}"></li>
     </ul>
+    <a href="/" class="button">Go back</a>
 </main>
 
 </body>
